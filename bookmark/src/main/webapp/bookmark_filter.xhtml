@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+			<p:fieldset>
+				<h:panelGrid columns="2">
+
+					<p:outputLabel for="description"
+						value="#{messages['bookmark.label.description']}"></p:outputLabel>
+					<p:inputText id="description" value="#{bookmarkFilterMB.description}"></p:inputText>
+
+					<p:outputLabel for="link"
+						value="#{messages['bookmark.label.link']}"></p:outputLabel>
+					<p:inputText id="link" value="#{bookmarkFilterMB.link}"></p:inputText>
+
+				</h:panelGrid>
+			</p:fieldset>
+			
+			<p:commandButton value="Filtrar 1" ajax="false"
+				action="#{bookmarkFilterMB.filter}">
+			</p:commandButton>
+			
+			<p:commandButton value="Filtrar 2" ajax="false"
+				action="#{bookmarkListMB.filter2}">
+				<f:param name="pdescription" value="#{bookmarkFilterMB.description}"></f:param>
+			</p:commandButton>	
+
+			<p:commandButton value="Filtrar 3" ajax="false"
+				action="#{bookmarkListMB.filter3(bookmarkFilterMB.description, bookmarkFilterMB.link)}">
+			</p:commandButton>
+			
+			<p:commandButton value="Filtrar 4" ajax="false"
+				action="#{bookmarkListMB.filter4}">
+				<f:param name="pdescription" value="#{bookmarkFilterMB.description}"></f:param>
+			</p:commandButton>
+			
+			<p:commandButton value="Filtrar 5" ajax="false"
+				action="#{bookmarkFilterMB.filter5}">
+				<f:param name="pdescription" value="#{bookmarkFilterMB.description}"></f:param>
+			</p:commandButton>				
+
+		</h:form>
+	</ui:define>
+</ui:composition>
